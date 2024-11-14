@@ -1,0 +1,59 @@
+.top-header{
+    background-color:  #6E55FF;
+    ;
+}
+
+.title img{
+    height: 45px;
+    width: 41px;
+}
+
+.title-name{
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.input-box input{
+    border: none;
+    width: 380px;
+    font-size: 16px;
+}
+
+.search{
+    overflow: hidden;
+}
+
+.search-button{
+    background: #000;
+    
+}
+
+.search-button button{
+    border: none;
+    background:transparent;
+    color: white;
+    font-size: 23px;
+}
+
+.english select{
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+.name span{
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+}
+
+/* .sign-icon img{
+    width: 200px;
+    height: 200px;
+} */
+
+.signname span{
+    font-size: 15px;
+    font-weight:700 ;
+    color: white;
+}

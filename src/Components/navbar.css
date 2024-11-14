@@ -1,0 +1,27 @@
+
+.navlinks  .navlink{
+    color: white;
+    font-size: 18px;
+}
+
+.sell{
+    background-color: #6E55FF;
+}
+
+.services{
+    background-color: #FFA920;
+}
+
+.sell button{
+    border: none;
+    color: white;
+    background: transparent;
+    font-size: 18px;
+}
+
+.services button{
+    border: none;
+    color: black;
+    background: transparent;
+    font-size: 18px;
+}

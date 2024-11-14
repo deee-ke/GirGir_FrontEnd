@@ -1,0 +1,133 @@
+.username span{
+    font-size: 27px;
+}
+
+.user-details{
+    position: relative;
+}
+
+.user-cover img{
+    transform: scaleX(-1);
+}
+
+.user-img{
+    width: 10rem;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 50%;
+    top: 14rem;
+    left: 2rem;
+}
+
+.info-name span{
+    font-size: 33px;
+    font-weight: 700;
+}
+
+.cpny div span{
+    font-size: 19px;
+    font-weight: 700;
+    color: #3A3A3C;
+}
+
+.cpny div img{
+    width: 23px;
+    height: 20px;
+}
+
+.pos span{
+    font-size: 17px;
+    font-weight: 600;
+    color: #6E55FF;
+}
+
+.soc-icon div{
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.watsp{
+    background-color: green;
+}
+.insta{
+    background: linear-gradient(45deg, #833AB4, #FD1D1D, #F56040);
+}
+.facebook{
+    background-color: #1877F2;
+}
+.twitx{
+    background-color: black;
+}
+.youtube{
+    background-color: #FF0000;
+}
+.chat{
+    background-color: #09B83E;
+}
+.telegram{
+    background-color: #0088CC;
+}
+
+.control-btn{
+ background-color: #F1F4F5;
+ border-radius: 12px;
+ padding-inline: 10px;
+ padding-block: 3px;
+ color: black;
+}
+.control-btn {
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.control-btn span{
+    display: flex;
+    align-items: center;
+}
+
+.about-head span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.about-details p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #3a3a3c;
+}
+
+.datas{
+    background-color: #f4f4f4;
+}
+
+.key span{
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a3a3c;
+}
+
+.value span{
+    font-size: 14px;
+    font-weight: 400;
+    color: #3a3a3c;
+}
+
+.add-btn,.save{
+    background: #6E55FF;
+}
+.add-btn:hover,.save:hover{
+    background: #6e55ffc1;
+}
+.add-btn button,.save button{
+    background: transparent;
+    border: none;
+    color: white;
+}
