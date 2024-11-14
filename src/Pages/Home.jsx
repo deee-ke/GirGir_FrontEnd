@@ -1,22 +1,35 @@
 //Home.jsx
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import arrow from '../Assets/ei_arrow-up.png'
 import '../Pages/home.css'
 import coverimg from '../Assets/Image.svg'
 import userimg from '../Assets/image 15.png'
 import vector from '../Assets/Vector.png'
 import { useDispatch, useSelector } from 'react-redux';
-import {  submitUserData, updateUserData } from '../Redux/slices/userSlice';
+import {  fetchUserData, sendUserData, updateUserData ,resetUserData } from '../Redux/slices/userSlice';
 
 function Home() {
 
     const [toggleAdd,setToggleAdd] = useState(false)
-    const dispatch = useDispatch();
     const userData = useSelector((state) => state.user.data);
+    
+    const dispatch = useDispatch();
+    const { data} = useSelector((state) => state.user);
 
-    const addDetails =()=>{
-        setToggleAdd(!toggleAdd)
+  // Fetch user data when the component mounts
+  useEffect(() => {
+    dispatch(fetchUserData());
+    
+  }, [dispatch]);
+
+
+
+  const addDetails = () => {
+    setToggleAdd(!toggleAdd);
+    if (toggleAdd) {
+      dispatch(resetUserData());  // Reset data when cancelling the form
     }
+  };
 
     
 
@@ -27,7 +40,7 @@ function Home() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(submitUserData());
+        dispatch(sendUserData(userData));
         setToggleAdd(!toggleAdd)
       };
 
@@ -163,32 +176,32 @@ function Home() {
                                     {toggleAdd?
                                     <div className="form">
                                         <form action="" onSubmit={handleSubmit} className='d-flex flex-column'>
-                                            <label htmlFor="name">Name</label>
-                                                <input type="text" id='name' onChange={handleChange}/>
+                                            <label htmlFor="email">Email</label>
+                                                <input type="text" id='email' value={data.email} onChange={handleChange}/>
                                             <label htmlFor="phone">Phone</label>
-                                                <input type="text" id='phone' onChange={handleChange}/>
+                                                <input type="text" id='phone' value={data.phone} onChange={handleChange}/>
                                             <label htmlFor="web">Website</label>
-                                                <input type="text" id='web' onChange={handleChange}/>
+                                                <input type="text" id='web' value={data.web} onChange={handleChange}/>
                                             <label htmlFor="gender">Gender</label>
-                                                <input type="text" id='gender' onChange={handleChange}/>
+                                                <input type="text" id='gender' value={data.gender} onChange={handleChange}/>
                                             <label htmlFor="dob">Date Of Birth</label>
-                                                <input type="text" id='dob' onChange={handleChange}/>
+                                                <input type="text" id='dob' value={data.dob} onChange={handleChange}/>
                                             <label htmlFor="nationality">Nationality</label>
-                                                <input type="text" id='nationality' onChange={handleChange}/>
+                                                <input type="text" id='nationality' value={data.nationality} onChange={handleChange}/>
                                             <label htmlFor="idnum">National ID Number</label>
-                                                <input type="text" id='idnum' onChange={handleChange}/>
+                                                <input type="text" id='idnum' value={data.idnum} onChange={handleChange}/>
                                             <label htmlFor="country">Country</label>
-                                                <input type="text" id='country' onChange={handleChange}/>
+                                                <input type="text" id='country' value={data.country} onChange={handleChange}/>
                                             <label htmlFor="province">Province/State</label>
-                                                <input type="text" id='province' onChange={handleChange}/>
+                                                <input type="text" id='province' value={data.country} onChange={handleChange}/>
                                             <label htmlFor="city">City</label>
-                                                <input type="text" id='city' onChange={handleChange}/>
+                                                <input type="text" id='city' value={data.city} onChange={handleChange}/>
                                             <label htmlFor="zip">Postal/Zip Code</label>
-                                                <input type="text" id='zip' onChange={handleChange}/>
+                                                <input type="text" id='zip' value={data.zip} onChange={handleChange}/>
                                             <label htmlFor="address">Address</label>
-                                                <input type="text" id='address' onChange={handleChange}/>
-                                            <div className="save">
-                                                <button type='submit'>Save</button>
+                                                <input type="text" id='address' value={data.address} onChange={handleChange}/>
+                                            <div className="save rounded px-2 w-25 mt-2">
+                                                <button type='submit' className='w-100'>Save</button>
                                             </div>    
                                         </form>
                                     </div>
@@ -232,20 +245,22 @@ function Home() {
                                                 <span>Address</span>
                                             </div>
                                         </div>
+                                        
                                         <div className='col-md-8 d-flex flex-column gap-2'>
-                                                    <div className="value"><span>{userData.name || '-'}</span></div>
-                                                    <div className="value"><span>{userData.phone || '-'}</span></div>
-                                                    <div className="value"><span>{userData.web || '-'}</span></div>
-                                                    <div className="value"><span>{userData.gender || '-'}</span></div>
-                                                    <div className="value"><span>{userData.dob || '-'}</span></div>
-                                                    <div className="value"><span>{userData.nationality || '-'}</span></div>
-                                                    <div className="value"><span>{userData.idnum || '-'}</span></div>
-                                                    <div className="value"><span>{userData.country || '-'}</span></div>
-                                                    <div className="value"><span>{userData.province || '-'}</span></div>
-                                                    <div className="value"><span>{userData.city || '-'}</span></div>
-                                                    <div className="value"><span>{userData.zip || '-'}</span></div>
-                                                    <div className="value"><span>{userData.address || '-'}</span></div>
-                                                </div>
+                                            <div className="value"><span>{data.email || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.phone || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.web || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.gender || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.dob || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.nationality || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.idnum || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.country || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.province || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.city || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.zip || 'No data added yet'}</span></div>
+                                            <div className="value"><span>{data.address || 'No data added yet'}</span></div>
+                                        </div>
+                                        
                                     </div>
                                     
                                     }
